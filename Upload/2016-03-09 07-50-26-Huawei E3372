@@ -1,0 +1,176 @@
+[
+  {
+    "Account": "this is pc", 
+    "ApplicationVersion": 1.0, 
+    "CellularInfo": [
+      {
+        "RSRQ": "20", 
+        "RSRP": "41", 
+        "SINR": "106", 
+        "CellTAC": null, 
+        "CellMNC": null, 
+        "CellMCC": null, 
+        "Time": 1457509826261, 
+        "RSSI": "39", 
+        "CellPCI": null, 
+        "CellID": "04C9420D"
+      }
+    ], 
+    "equipmentId": 13587383294564, 
+    "IMEI": null, 
+    "other": [
+      {
+        "D": "3584", 
+        "WirelseeType": "LTE"
+      }
+    ], 
+    "Lat": null, 
+    "AppicationType": "linux", 
+    "Lng": null
+  }, 
+  {
+    "Account": "this is pc", 
+    "ApplicationVersion": 1.0, 
+    "CellularInfo": [
+      {
+        "RSRQ": "20", 
+        "RSRP": "43", 
+        "SINR": "116", 
+        "CellTAC": null, 
+        "CellMNC": null, 
+        "CellMCC": null, 
+        "Time": 1457509827276, 
+        "RSSI": "41", 
+        "CellPCI": null, 
+        "CellID": "04C9420D"
+      }
+    ], 
+    "equipmentId": 13587383294564, 
+    "IMEI": null, 
+    "other": [
+      {
+        "D": "3584", 
+        "WirelseeType": "LTE"
+      }
+    ], 
+    "Lat": null, 
+    "AppicationType": "linux", 
+    "Lng": null
+  }, 
+  {
+    "Account": "this is pc", 
+    "ApplicationVersion": 1.0, 
+    "CellularInfo": [
+      {
+        "RSRQ": "16", 
+        "RSRP": "42", 
+        "SINR": "116", 
+        "CellTAC": null, 
+        "CellMNC": null, 
+        "CellMCC": null, 
+        "Time": 1457509828293, 
+        "RSSI": "42", 
+        "CellPCI": null, 
+        "CellID": "04C9420D"
+      }
+    ], 
+    "equipmentId": 13587383294564, 
+    "IMEI": null, 
+    "other": [
+      {
+        "D": "3584", 
+        "WirelseeType": "LTE"
+      }
+    ], 
+    "Lat": null, 
+    "AppicationType": "linux", 
+    "Lng": null
+  }, 
+  {
+    "Account": "this is pc", 
+    "ApplicationVersion": 1.0, 
+    "CellularInfo": [
+      {
+        "RSRQ": "16", 
+        "RSRP": "41", 
+        "SINR": "116", 
+        "CellTAC": null, 
+        "CellMNC": null, 
+        "CellMCC": null, 
+        "Time": 1457509829312, 
+        "RSSI": "41", 
+        "CellPCI": null, 
+        "CellID": "04C9420D"
+      }
+    ], 
+    "equipmentId": 13587383294564, 
+    "IMEI": null, 
+    "other": [
+      {
+        "D": "3584", 
+        "WirelseeType": "LTE"
+      }
+    ], 
+    "Lat": null, 
+    "AppicationType": "linux", 
+    "Lng": null
+  }, 
+  {
+    "Account": "this is pc", 
+    "ApplicationVersion": 1.0, 
+    "CellularInfo": [
+      {
+        "RSRQ": "20", 
+        "RSRP": "42", 
+        "SINR": "116", 
+        "CellTAC": null, 
+        "CellMNC": null, 
+        "CellMCC": null, 
+        "Time": 1457509830329, 
+        "RSSI": "40", 
+        "CellPCI": null, 
+        "CellID": "04C9420D"
+      }
+    ], 
+    "equipmentId": 13587383294564, 
+    "IMEI": null, 
+    "other": [
+      {
+        "D": "3584", 
+        "WirelseeType": "LTE"
+      }
+    ], 
+    "Lat": null, 
+    "AppicationType": "linux", 
+    "Lng": null
+  }, 
+  {
+    "Account": "this is pc", 
+    "ApplicationVersion": 1.0, 
+    "CellularInfo": [
+      {
+        "RSRQ": "20", 
+        "RSRP": "42", 
+        "SINR": "116", 
+        "CellTAC": null, 
+        "CellMNC": null, 
+        "CellMCC": null, 
+        "Time": 1457509831348, 
+        "RSSI": "40", 
+        "CellPCI": null, 
+        "CellID": "04C9420D"
+      }
+    ], 
+    "equipmentId": 13587383294564, 
+    "IMEI": null, 
+    "other": [
+      {
+        "D": "3584", 
+        "WirelseeType": "LTE"
+      }
+    ], 
+    "Lat": null, 
+    "AppicationType": "linux", 
+    "Lng": null
+  }
+]
