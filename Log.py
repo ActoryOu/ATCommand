@@ -32,6 +32,19 @@ class Logger():
         self.MAC=get_mac()
         self.Version=1.0
         self.RSAPrivateKey=None
+        self.username=None
+
+        #address the LogSetup.conf here
+        if os.path.exists('.//Setting//LogSetup.conf'):
+            print 'LogSetup.conf exists'
+            fd = open('.//Setting//LogSetup.conf', 'r')
+            variables = fd.readline().strip('\n')
+            for line in fd.readlines():
+                variables += "&"+line.strip('\n')
+            # print 'variables:'+variables
+            self.SplitTokenAndSave(variables)
+        else:
+            self.username='this is pc'
 
         if os.path.exists("priv.pem"):
             print "get RSAsignature key from file"
@@ -412,7 +425,7 @@ Ruje7gPSGvWNgjjVvmiZbDRQbsyVDF65TmRik5jlzYiHBvdaR12rZvYW1g==\n\
         jsonElement=dict.fromkeys(seq)
         jsonElement["AppicationType"]=self.commandserial.GetPlatformOS()
         jsonElement["ApplicationVersion"]=self.Version
-        jsonElement["Account"]='this is pc'
+        jsonElement["Account"]=self.username
         jsonElement["equipmentId"]=self.MAC
         jsonElement["CellularInfo"]=[]
         cellseq=( "Time","CellID","CellMCC","CellMNC","CellPCI","CellTAC","RSSI","SINR","RSRQ","RSRP")
@@ -427,3 +440,24 @@ Ruje7gPSGvWNgjjVvmiZbDRQbsyVDF65TmRik5jlzYiHBvdaR12rZvYW1g==\n\
 
     def GetGPSLogFile(self):
         return self.GPSLogFile
+
+    def SaveLogSetupConfig(self, variables):
+        self.SplitTokenAndSave(variables)
+        
+        outfile = open('.//Setting//LogSetup.conf', 'w')
+        outfile.write('username='+self.username)
+        outfile.close()
+        pass
+
+    def SplitTokenAndSave(self, variables):
+        token = variables.split("&")
+        for t in token:
+            print 't=',t
+            SysToken = t.split("=")
+            if( SysToken[0] == 'username' ):
+                print 'SysToken[0]',SysToken[0]
+                self.username = str(SysToken[1])
+        pass
+
+    def GetUserName(self):
+        return self.username

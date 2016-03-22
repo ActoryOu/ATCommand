@@ -2,6 +2,7 @@
 import webbrowser
 from  Tkinter import *
 from Function import Function
+import requests
    
 class GUIDemo():
     def __init__(self, master=None):
@@ -23,7 +24,7 @@ class GUIDemo():
         self.main_container = Frame(master, bg="green",width=800, height=666)
         self.main_container.grid()
 
-        self.top_frame = Frame(self.main_container, bg="red",width=666, height=666)
+        self.top_frame = Frame(self.main_container, bg="green",width=666, height=666)
         self.top_frame.grid()
         
         self.bottom_frame = Frame(self.main_container, bd=2, bg="yellow",width=666, height=666)
@@ -43,8 +44,7 @@ class GUIDemo():
         self.createButtomWidgets()
         #self.ModemSerialrefreshevent()
     
-        
-        
+
     def createTopWidgets(self):
         self.createUserInputButton()
         self.createLogButton()
@@ -54,8 +54,8 @@ class GUIDemo():
         self.createUploadButton()
         self.createSystemLabel()    
         self.createSignInSignUpButton()
-        
-    
+       
+
     def createUserInputButton(self):
         self.inputText = Label(self.top_frame)
         self.inputText["text"] = "Input Command:"
@@ -69,14 +69,16 @@ class GUIDemo():
         self.enter["text"] = "Enter"
         self.enter.grid(row=0,column=6,sticky=E)   
         
+
     def createSystemLabel(self):
-        self.systiminfoText = Label(self.top_frame, text = "System Info: ")
-        self.systiminfoText.grid(row=4, column=0)
+        self.userinfoText = Label(self.top_frame, text = "User Name: ")
+        self.userinfoText.grid(row=4, column=0)
         
         self.displayText = Label(self.top_frame)
-        self.displayText["text"] = "something happened"
+        self.displayText["text"] = self.function.logger.GetUserName()
         self.displayText.grid(row=4, column=1)
     
+
     def createLogButton(self):
         myrow=0
         self.logstate = IntVar()
@@ -90,7 +92,6 @@ class GUIDemo():
         #self.top[0].geometry("%dx%d%+d%+d" % (300, 200, 250, 125))
         
         
-        
     def createAutoSendButton(self):
         self.autosendstate = IntVar()
         self.autosend = Checkbutton(self.top_frame, text="AutoSend", variable=self.autosendstate, command = self.Autosendevent)
@@ -102,10 +103,12 @@ class GUIDemo():
         #self.top.append(Toplevel())
         #self.top[0].geometry("%dx%d%+d%+d" % (300, 200, 250, 125))
     
+
     def createModemButton(self):
         self.modemconfig = Button(self.top_frame, text="Modem Config", command = self.Modemconfigevent)
         self.modemconfig.grid(row=2, column=2)
         
+
     def createModemSerialButton(self,frame,myrow,mycolumn):
         self.Modemserialchoosestate = StringVar(frame)
         self.Modemserialchoosestate.set(self.ModemSerialList[0]) # default value
@@ -115,12 +118,12 @@ class GUIDemo():
         self.Modemserialrefresh = Button(frame, text = "Serial refresh", command=self.ModemSerialrefreshevent )
         self.Modemserialrefresh.grid(row=myrow, column=mycolumn)
         
+
     def createModemChooseButton(self,frame,myrow,mycolumn):
         self.Modemchoosestate = StringVar(frame)
         self.Modemchoosestate.set(self.ModemList[0]) # default value
         self.Modemchoosemenu =  OptionMenu(frame, self.Modemchoosestate, *self.ModemList, command = self.Modemchooseevent )
         self.Modemchoosemenu.grid(row=myrow, column=mycolumn+1)
-        
         
         
     def createGPSButton(self):
@@ -135,6 +138,7 @@ class GUIDemo():
         #self.top.append(Toplevel())
         #self.top[0].geometry("%dx%d%+d%+d" % (300, 200, 250, 125))
         
+
     def createGPSSerialButton(self,frame,myrow,mycolumn):
         self.GPSserialchoosestate = StringVar(frame)
         self.GPSserialchoosestate.set(self.GPSSerialList[0]) # default value
@@ -144,6 +148,7 @@ class GUIDemo():
         self.GPSserialrefresh = Button(frame, text = "Serial refresh", command=self.GPSSerialrefreshevent )
         self.GPSserialrefresh.grid(row=myrow, column=mycolumn)    
         
+
     def createUploadButton(self):
         myrow=0
         self.upload = Button(self.top_frame, text = "Upload", command = self.Uploadevent)
@@ -162,6 +167,7 @@ class GUIDemo():
         self.SignIn = Button(self.top_frame,text="Sign In", command = self.SignInevent)
         self.SignIn.grid(row=4, column=4)
     
+
     def createButtomWidgets(self):
         self.txt = Text(self.bottom_frame, height=20)
         
@@ -173,6 +179,8 @@ class GUIDemo():
         self.txt.config(yscrollcommand=self.scroll.set)
         self.scroll.grid(row=0, column=7, sticky='Ens')
         self.function.SetScrollText(self.txt)
+
+
     def Logevent(self):
         """handle the modem log state. if the log state=0, then close the gps log as well
         """
@@ -186,6 +194,7 @@ class GUIDemo():
         #self.displayText["text"] = "Logevent" + str(self.logstate.get())
         pass
     
+
     def Logconfigevent(self):
         myrow=0
         #self.popwindows.append(Toplevel())
@@ -213,11 +222,13 @@ class GUIDemo():
         #self.displayText["text"] = "Logconfigevent" + str(self.logstate.get())
         pass
     
+
     def Autosendevent(self):
         print "self.autosendstate:",self.autosendstate.get()
         self.function.SetAutoSendState(self.autosendstate.get())
         pass
     
+
     def Autosendconfigevent(self):
         """Set time interval, and command list. will del the old history command list
         """
@@ -267,6 +278,7 @@ class GUIDemo():
         #self.displayText["text"] = "Autosendconfigevent" + str(self.autosendstate.get())
         pass
     
+
     def Modemconfigevent(self):
         myrow=0
         
@@ -304,6 +316,7 @@ class GUIDemo():
     def ModemSerialevent(self):
         pass
     
+
     def ModemSerialrefreshevent(self):
         """Get the abailable serial list from Serial.py
         """
@@ -321,6 +334,7 @@ class GUIDemo():
         
         # self.displayText["text"] = "ModemSerialrefreshevent" + str(self.ModemSerialList) + str(self.Modemserialchoosestate.get())
         
+
     def ModemSerialchooseevent(self,value=0):
         """User choose a serial port
         """
@@ -330,6 +344,7 @@ class GUIDemo():
         # self.displayText["text"] = "ModemSerialchooseevent" + str(self.ModemSerialList) + str(value)
         pass
     
+
     def Modemchooseevent(self,value=0):
         """user choice a modem
         """
@@ -340,6 +355,7 @@ class GUIDemo():
         
         # self.displayText["text"] = "Modemchooseevent"  + str(self.Modemchoosestate.get())
     
+
     def GPSlogevent(self):
         """Log the GPS data only after the log data is activated
         """
@@ -354,6 +370,7 @@ class GUIDemo():
         
         # self.displayText["text"] = "Logevent" + str(self.logGPSstate.get())
     
+
     def GPSConfigevent(self):
         myrow=0
         self.GPSpopwindows=Toplevel()
@@ -375,6 +392,7 @@ class GUIDemo():
         # self.displayText["text"] = "GPSevent" 
         pass
         
+
     def GPSSerialrefreshevent(self):
         """Get the abailable serial list from Serial.py
         """
@@ -391,6 +409,7 @@ class GUIDemo():
         
         # self.displayText["text"] = "ModemSerialrefreshevent" + str(self.GPSSerialList) + str(self.GPSserialchoosestate.get())
     
+
     def GPSSerialchooseevent(self,value=0):
         """User choose a GPS serial port
         """
@@ -400,12 +419,14 @@ class GUIDemo():
         # self.displayText["text"] = "GPSSerialchooseevent" + str(self.GPSSerialList) + str(value)
         pass
         
+
     def Uploadevent(self):
         self.function.GetUploadConfig()
         self.function.UploadFile()
         # self.displayText["text"] = "Uploadevent" 
         pass
        
+
     def Uploadconfigevent(self):
         myrow=0
         self.Uploadpopwindows=Toplevel()
@@ -440,12 +461,14 @@ class GUIDemo():
         # self.displayText["text"] = "Uploadconfigevent" 
         pass
     
+
     def UploadFileListChoose(self,value):
         
         self.function.SetUploadFile(self.UploadFileList[value],self.UploadFileListState[value].get())
         print self.UploadFileList[value],value,self.UploadFileListState[value].get()
         pass
     
+
     def Enterevent(self):
         # self.displayText["text"] = "This is Enter."
         mess = self.inputField.get() + "\r"
@@ -453,47 +476,55 @@ class GUIDemo():
         #self.txt.insert(END,output)
         #self.txt.yview(END)
         
+
     def EntryEnterEvent(self,event):
         print "click"
         # self.displayText["text"] = "entry enter"
         mess = self.inputField.get() + "\r\n"
         self.txt.insert(END,mess)
         
+
     def LogconfigSaveevent(self):
         self.Logpopwindows.destroy()
         # self.displayText["text"] = "LogconfigSaveevent" 
         pass
         
+
     def AutosendconfigSaveevent(self):
         self.Autosendpopwindows.destroy()
         # self.displayText["text"] = "AutosendconfigSaveevent" 
         pass
         
+
     def ModemconfigSaveevent(self):
         print "Modem",self.Modemserialchoosestate.get()
         self.function.SetModemSerialPort(self.Modemserialchoosestate.get())
         self.Modempopwindows.destroy()
         # self.displayText["text"] = "ModemconfigSaveevent" 
     
+
     def GPSSaveevent(self):
         self.GPSpopwindows.withdraw()
         # self.displayText["text"] = "GPSSaveevent" 
         pass
         
+
     def UploadconfigSaveevent(self):
         self.Uploadpopwindows.withdraw()
         # self.displayText["text"] = "UploadconfigSaveevent" 
         pass
     
+
     def ModemCommandListChoose(self,i):
-        
         #self.ModemCommandListState[3].set(1)
         self.function.SetAutoSendCommand(self.ModemCommandList[i],self.ModemCommandListState[i].get())
         print self.ModemCommandList[i],i,self.ModemCommandListState[i].get()
     
+
     def Modemdebugevent(self):
         # self.displayText["text"] = "Modemdebugevent" 
         pass
+
 
     def SignUpevent(self):
         new = 2 # open in a new tab, if possible
@@ -501,29 +532,48 @@ class GUIDemo():
         url = "https://140.113.216.37/accounts/register/"
         webbrowser.open(url,new=new)
 
-    def SignInevent(self):myrow=0
+
+    def SignInevent(self):
+        myrow=0
         self.SignInWindows=Toplevel()
         self.SignInWindows.title("Sign In")
         
-        self.SignInMB=Menubutton ( self.SignInWindows, text="Upload File List", relief=RAISED )
-        self.SignInMB.grid(row=myrow, column=0)
+        self.UserNameLabel = Label(self.SignInWindows, text="UserName: ")
+        self.UserNameLabel.grid(row=myrow, column=0)
+        self.UserNameField = Entry(self.SignInWindows)
+        self.UserNameField["width"] = 20
+        self.UserNameField.grid(row=myrow, column=1, columnspan=2)
         myrow+=1
-        self.UploadMB.menu = Menu ( self.UploadMB, tearoff = 0 )
-        self.UploadMB["menu"] = self.UploadMB.menu
+
+        self.PwdLabel = Label(self.SignInWindows, text="Pwd: ")
+        self.PwdLabel.grid(row=myrow, column=0)
+        self.PwdField = Entry(self.SignInWindows)
+        self.PwdField["width"] = 20
+        self.PwdField.grid(row=myrow, column=1, columnspan=2)
+        myrow+=1
+
+        CancelButton = Button(self.SignInWindows, text="Cancel", command=self.SignInWindows.destroy)
+        CancelButton.grid(row=myrow, column=1)
         
-        del self.UploadFileListState[:]
-        del self.UploadFileListState[:]
-        self.UploadFileList= self.function.GetUploadFileList()
-        
-        for i in range(len(self.UploadFileList)):
-            self.UploadFileListState.append(IntVar())
-            self.UploadMB.menu.add_checkbutton (label=self.UploadFileList[i],variable=self.UploadFileListState[i],command=lambda choice=i: self.UploadFileListChoose(choice))
-        
-        button = Button(self.SignInWindows, text="Cancel", command=self.SignInWindows.destroy)
-        button.grid(row=myrow, column=1)
-        
-        Save = Button(self.SignInWindows, text="Save", command=self.SignInWindows.destroy)
-        Save.grid(row=myrow, column=0)
+        LoginButton = Button(self.SignInWindows, text="Login", command=self.SignInLoginEvent)
+        LoginButton.grid(row=myrow, column=0)
+        pass
+
+
+    def SignInLoginEvent(self):
+        cafile = 'apache.pem'
+
+        username = self.UserNameField.get()
+
+        r = requests.get('https://140.113.216.37/signal/api/login', params={'username': username, 'password': self.PwdField.get()}, verify=cafile)
+        print "r.text:", r.text
+
+        if r.text == 'login successfully':
+            self.function.LoginSuccess(username)
+            self.displayText["text"] = self.function.logger.GetUserName()
+
+        self.SignInWindows.withdraw()
+        pass
  
 if __name__ == '__main__':
     root = Tk()

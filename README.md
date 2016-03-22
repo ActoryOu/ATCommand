@@ -5,6 +5,7 @@ The program is made by python 2.7 version.
 Before executing this program, you should install some plugin for python.
 1. pyserial
 2. pycrypto
+3. requests
 
 Then you can execute the program easily.
 

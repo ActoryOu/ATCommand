@@ -284,3 +284,8 @@ class Function():
         # if self.ModemLogFile != None:
             # myUTCtime = datetime.strftime(datetime.utcnow(),'%Y-%m-%d %H-%M-%S')
             # self.ModemLogFile.write(myUTCtime+":"+output+"\r\n")
+
+    def LoginSuccess(self, username):
+        variables = 'username='+username
+        self.logger.SaveLogSetupConfig(variables)
+        pass
