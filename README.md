@@ -1,5 +1,6 @@
 # ATCommand
 AT+GPS+log
+UPDATE
 
 The program is made by python 2.7 version.
 Before executing this program, you should install some plugin for python.
